@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_app_bar_title">Home</string>
+    <string name="home_delete_all">HomeScreen DeleteAll Action</string>
+    <string name="home_history_action">HomeScreen History Action</string>
+    <string name="home_appbar_history_text">History</string>
+    <string name="result_top_bar_title">Result</string>
+    <string name="history_top_bar_title">History</string>
+</resources>

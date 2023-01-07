@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BorutoApp</string>
+    <string name="app_logo">App Logo</string>
+    <string name="onBoarding_image">OnBoarding Image</string>
+    <string name="welcome_paging_finish_btn">Finish</string>
+    <string name="home_app_bar_title">Home</string>
+    <string name="home_history_action">HomeScreen History Action</string>
+    <string name="home_appbar_history_text">History</string>
+    <string name="result_top_bar_title">Result</string>
+    <string name="history_top_bar_title">History</string>
+    <string name="history_delete_all">Delete all</string>
+    <string name="delete_all_cards">Delete all cards</string>
+    <string name="delete_all_cards_confirm">Are you sure you want to remove all cards?</string>
+</resources>
