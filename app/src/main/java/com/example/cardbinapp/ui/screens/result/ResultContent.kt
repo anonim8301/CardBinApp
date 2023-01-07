@@ -62,11 +62,13 @@ fun handleBadResponseIcon(): Int {
 
 @Composable
 fun CardIsNotNull(currentCard: CardModel, context: Context) {
-    ConstraintLayout(modifier = Modifier
-        .verticalScroll(rememberScrollState())
-        .fillMaxSize()
-        .background(MaterialTheme.colors.appBgColor)
-        .padding(LARGE_PADDING)) {
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.appBgColor)
+            .verticalScroll(rememberScrollState())
+            .padding(LARGE_PADDING)
+    ) {
         val (
             creditCard,
             textFields,
@@ -101,7 +103,6 @@ fun TextsSection(
     modifier: Modifier,
     context: Context,
 ) {
-
 
     Column(modifier = modifier) {
         TextModel(text = "Scheme: ${currentCard.scheme}")
