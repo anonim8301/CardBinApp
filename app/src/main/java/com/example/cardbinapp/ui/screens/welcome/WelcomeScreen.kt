@@ -32,7 +32,6 @@ fun WelcomeScreen(sharedViewModel: SharedViewModel, navigateToHomeScreen: () -> 
         OnBoardingPage.First,
         OnBoardingPage.Second,
     )
-
     val pageState = rememberPagerState()
 
     Column(

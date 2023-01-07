@@ -22,11 +22,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.cardbinapp.R
+import com.example.cardbinapp.components.CreditCard
 import com.example.cardbinapp.ui.theme.*
 import com.example.cardbinapp.utils.Constants.SEARCH_SCREEN
 import com.example.cardbinapp.utils.Constants.SUCCESS_SCREEN
-import com.example.cardbinapp.R
-import com.example.cardbinapp.components.CreditCard
 
 @Composable
 fun HomeContent(
@@ -65,7 +65,8 @@ fun SearchContent(
     homeButtonEnabled: Boolean,
 ) {
     var inputCardBin by remember { mutableStateOf("") }
-    val maxLength = 6
+    val minLength = 6
+    val maxLength = 8
 
     ConstraintLayout(modifier = Modifier
         .fillMaxSize()
@@ -101,7 +102,7 @@ fun SearchContent(
                     .fillMaxWidth()
                     .padding(bottom = 4.dp),
                 textAlign = TextAlign.Start,
-                color = primaryColor
+                color = MaterialTheme.colors.contentTextColor
             )
             TextField(
                 modifier = Modifier.fillMaxWidth(),
@@ -111,7 +112,8 @@ fun SearchContent(
                     cursorColor = Color.Black,
                     disabledLabelColor = textFieldColor,
                     focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
+                    unfocusedIndicatorColor = Color.Transparent,
+                    textColor = primaryColor
                 ),
                 onValueChange = {
                     if (it.length <= maxLength) {
@@ -139,7 +141,7 @@ fun SearchContent(
                     .fillMaxWidth()
                     .padding(top = 4.dp),
                 textAlign = TextAlign.End,
-                color = primaryColor
+                color = handleInputCountColor(inputCardBin.length, minLength)
             )
         }
 
@@ -153,7 +155,7 @@ fun SearchContent(
                 },
             shape = RoundedCornerShape(ROUNDED_CORNER_SHAPE_DP),
             onClick = {
-                if (inputCardBin.length == maxLength) {
+                if (inputCardBin.length >= minLength) {
                     onSearchClicked(inputCardBin)
                 } else {
                     makeToast(context = context)
@@ -178,4 +180,8 @@ fun makeToast(context: Context) {
         "Fill all!",
         Toast.LENGTH_SHORT
     ).show()
+}
+
+fun handleInputCountColor(input: Int, minLength: Int): Color {
+    return if (input >= minLength) primaryColor else customRed
 }

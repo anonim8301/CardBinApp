@@ -16,10 +16,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import com.example.cardbinapp.ui.theme.Black
+import com.example.cardbinapp.R
+import com.example.cardbinapp.ui.theme.customBlack
 import com.example.cardbinapp.ui.theme.primaryColorDarker
 import com.example.cardbinapp.ui.theme.primaryColorLighter
-import com.example.cardbinapp.R
 import com.example.cardbinapp.utils.Constants.SPLASH_ANIMATION_DURATION
 import kotlinx.coroutines.delay
 
@@ -33,12 +33,12 @@ fun SplashScreen(
 
     val alphaState by animateFloatAsState(
         targetValue = if (visible) 1f else 0f,
-        animationSpec = tween(SPLASH_ANIMATION_DURATION.toInt())
+        animationSpec = tween(SPLASH_ANIMATION_DURATION)
     )
 
     LaunchedEffect(key1 = true) {
         visible = true
-        delay(SPLASH_ANIMATION_DURATION)
+        delay(SPLASH_ANIMATION_DURATION.toLong())
         navigateToHomeScreen()
     }
     Splash(alphaState)
@@ -65,6 +65,6 @@ fun Splash(
 
 @Composable
 fun splashBgColor(): List<Color> {
-    return if (isSystemInDarkTheme()) listOf(Black, Black) else listOf(primaryColorDarker,
-        primaryColorLighter)
+    return if (isSystemInDarkTheme()) listOf(customBlack, customBlack)
+    else listOf(primaryColorDarker, primaryColorLighter)
 }

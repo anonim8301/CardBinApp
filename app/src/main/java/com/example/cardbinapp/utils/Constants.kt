@@ -20,5 +20,5 @@ object Constants {
     const val ON_BOARDING_PAGE_COUNT = 2
 
     const val SUCCESS_ANIMATION_DURATION = 3000
-    const val SPLASH_ANIMATION_DURATION = 3000L
+    const val SPLASH_ANIMATION_DURATION = 3000
 }

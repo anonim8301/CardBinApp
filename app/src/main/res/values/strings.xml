@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BorutoApp</string>
+    <string name="app_name">CardBinApp</string>
     <string name="app_logo">App Logo</string>
     <string name="onBoarding_image">OnBoarding Image</string>
     <string name="welcome_paging_finish_btn">Finish</string>

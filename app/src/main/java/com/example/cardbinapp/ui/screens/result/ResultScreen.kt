@@ -1,5 +1,6 @@
 package com.example.cardbinapp.ui.screens.result
 
+import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -10,6 +11,7 @@ import com.example.cardbinapp.ui.viewmodels.SharedViewModel
 import com.example.cardbinapp.utils.Constants.SEARCH_SCREEN
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ResultScreen(
     sharedViewModel: SharedViewModel,

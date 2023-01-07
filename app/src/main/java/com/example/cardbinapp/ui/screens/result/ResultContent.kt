@@ -6,13 +6,13 @@ import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -20,25 +20,22 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.cardbinapp.ui.theme.EXTRA_SMALL_PADDING
-import com.example.cardbinapp.ui.theme.LARGE_PADDING
-import com.example.cardbinapp.ui.theme.SMALL_PADDING
-import com.example.cardbinapp.ui.theme.appBgColor
 import com.example.cardbinapp.R
 import com.example.cardbinapp.components.CreditCard
 import com.example.cardbinapp.domain.model.Bank
 import com.example.cardbinapp.domain.model.CardModel
+import com.example.cardbinapp.ui.theme.*
 
 @Composable
 fun ResultContent(
     currentCard: CardModel?,
     context: Context,
 ) {
-    if (currentCard != null) CardIsNotNull(currentCard, context) else CarsIsNull()
+    if (currentCard != null) CardIsNotNull(currentCard, context) else CardIsNull()
 }
 
 @Composable
-fun CarsIsNull() {
+fun CardIsNull() {
     Column(modifier = Modifier
         .fillMaxSize()
         .background(MaterialTheme.colors.appBgColor),
@@ -47,17 +44,23 @@ fun CarsIsNull() {
 
         Image(
             modifier = Modifier.size(64.dp),
-            painter = painterResource(id = R.drawable.ic_network_error),
+            painter = painterResource(id = handleBadResponseIcon()),
             contentDescription = ""
         )
         Text(
             text = "Bad Response!",
             fontFamily = FontFamily.Monospace,
             fontSize = 24.sp,
-            color = Color.Black,
+            color = MaterialTheme.colors.contentTextColor,
             fontWeight = FontWeight.Bold
         )
     }
+}
+
+@Composable
+fun handleBadResponseIcon(): Int {
+    return if (isSystemInDarkTheme()) R.drawable.ic_network_error
+    else R.drawable.ic_network_error_black
 }
 
 @Composable
@@ -82,7 +85,7 @@ fun CardIsNotNull(currentCard: CardModel, context: Context) {
                     top.linkTo(parent.top)
                 },
         )
-        TextFields(
+        TextsSection(
             modifier = Modifier
                 .fillMaxWidth()
                 .constrainAs(textFields) {
@@ -95,7 +98,7 @@ fun CardIsNotNull(currentCard: CardModel, context: Context) {
 }
 
 @Composable
-fun TextFields(
+fun TextsSection(
     currentCard: CardModel,
     modifier: Modifier,
     context: Context,
@@ -137,7 +140,7 @@ fun HandleBankPhoneNum(
             text = "Bank phone: $phoneNum",
             fontFamily = FontFamily.Monospace,
             fontSize = 18.sp,
-            color = Color.Black,
+            color = MaterialTheme.colors.contentTextColor,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
@@ -158,7 +161,7 @@ fun HandleBankUrl(
             text = "Bank website: $bankUrl",
             fontFamily = FontFamily.Monospace,
             fontSize = 18.sp,
-            color = Color.Black,
+            color = MaterialTheme.colors.contentTextColor,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
@@ -185,7 +188,7 @@ fun HandleCountryLocation(
         text = "Country location: $latitude, $longitude",
         fontFamily = FontFamily.Monospace,
         fontSize = 18.sp,
-        color = Color.Black,
+        color = MaterialTheme.colors.contentTextColor,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis
     )
@@ -198,7 +201,7 @@ fun TextModel(text: String) {
         text = text,
         fontFamily = FontFamily.Monospace,
         fontSize = 18.sp,
-        color = Color.Black,
+        color = MaterialTheme.colors.contentTextColor,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis
     )

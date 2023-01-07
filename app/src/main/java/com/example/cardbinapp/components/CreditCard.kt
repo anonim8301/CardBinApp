@@ -2,6 +2,7 @@ package com.example.cardbinapp.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,8 +36,11 @@ fun CreditCard(
         modifier = modifier
     ) {
         ConstraintLayout(modifier = Modifier
-            .background(brush = Brush.horizontalGradient(colors = listOf(creditCardColor1,
-                creditCardColor2)))
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = if (isSystemInDarkTheme()) darkThemeCreditCardColorList else creditCardColorList
+                )
+            )
             .padding(SMALL_PADDING)) {
             val (
                 iChip,
@@ -64,7 +68,7 @@ fun CreditCard(
             )
 
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
+                painter = painterResource(id = R.drawable.chip_credit_card),
                 contentDescription = null,
                 modifier = Modifier
                     .constrainAs(iChip) {

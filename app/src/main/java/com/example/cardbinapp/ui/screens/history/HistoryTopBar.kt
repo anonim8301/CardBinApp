@@ -6,10 +6,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import com.example.cardbinapp.ui.theme.buttonBgColor
-import com.example.cardbinapp.ui.theme.topAppBarBg
-import com.example.cardbinapp.ui.theme.topAppBarContentColor
 import com.example.cardbinapp.R
+import com.example.cardbinapp.ui.theme.*
 
 
 @Composable
@@ -92,6 +90,7 @@ fun ShowAlertDialog(
             },
             dismissButton = {
                 OutlinedButton(
+                    colors = ButtonDefaults.buttonColors(backgroundColor = customWhite),
                     onClick = {
                         onCloseClicked()
                     }) {
