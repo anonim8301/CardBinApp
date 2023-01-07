@@ -3,10 +3,7 @@ package com.example.cardbinapp.ui.screens.result
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -66,6 +63,7 @@ fun handleBadResponseIcon(): Int {
 @Composable
 fun CardIsNotNull(currentCard: CardModel, context: Context) {
     ConstraintLayout(modifier = Modifier
+        .verticalScroll(rememberScrollState())
         .fillMaxSize()
         .background(MaterialTheme.colors.appBgColor)
         .padding(LARGE_PADDING)) {
